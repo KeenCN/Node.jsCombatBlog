@@ -1,7 +1,7 @@
 var mongodb = require('./db');
 
 function User(user) {
-    this.name = user.name;
+    this.username = user.username;
     this.password = user.password;
     this.email = user.email;
 }
@@ -13,7 +13,7 @@ module.exports = User;
 User.prototype.save = function (callback) {
     //save db for user document
     var user = {
-        name: this.name,
+        username: this.username,
         password: this.password,
         email: this.email
     };
@@ -46,7 +46,7 @@ User.prototype.save = function (callback) {
 };
 
 //reading user info
-User.get = function(name, callback) {
+User.get = function(username, callback) {
 
     //open db
     mongodb.open(function (err, db){
@@ -64,7 +64,7 @@ User.get = function(name, callback) {
 
             //find user name document for name key
             collection.findOne({
-                name: name
+                username: username
             }, function (err, user){
                 mongodb.close();
                 if (err) {
