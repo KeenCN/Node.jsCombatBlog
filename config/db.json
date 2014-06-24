@@ -1,0 +1,5 @@
+{
+    "cookieSecret": "myblog",
+    "db": "blog",
+    "host": "localhost"
+}

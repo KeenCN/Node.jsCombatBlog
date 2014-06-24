@@ -1,0 +1,14 @@
+{
+    "loginPage": [
+        "/post"
+    ],
+    "notLoginPage": [
+        "/reg"
+    ],
+    "loginPageURL": "/login",
+
+    "adminLoginPage": [
+        "/admin/"
+    ],
+    "adminLoginPageURL": "/admin/login"
+}
