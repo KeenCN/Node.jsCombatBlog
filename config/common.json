@@ -1,0 +1,31 @@
+{
+    "session": {
+        "db": "blog",
+        "host": "localhost",
+        "cookieSecret": "myblog"
+    },
+    "application": {
+        "default": {
+            "domain": "127.0.0.1",
+            "rewirteRoute":{
+                "perDirectory": ""
+            },
+            "db": {
+                "cookieSecret": "myblog",
+                "db": "blog",
+                "host": "localhost"
+            }
+        },
+        "localhost": {
+            "domain": "localhost",
+            "rewirteRoute":{
+                "perDirectory": ""
+            },
+            "db": {
+                "cookieSecret": "myblog",
+                "db": "blog",
+                "host": "localhost"
+            }
+        }
+    }
+}

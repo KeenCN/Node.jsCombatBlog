@@ -1,7 +1,9 @@
 //This is competence controller
 var Competence = function (req, res, next){
-    var config = require('../config/competence.json');
-    var pathname = req._parsedUrl.pathname.toString();
+
+    var config = require(APP_CONFIG_DIR + '/competence.json');
+    //var pathname = req._parsedUrl.pathname.toString();
+    var pathname = req.path.toString();
 
     if (CompetenceEach(pathname, config.loginPage)) {
         if(!req.session.user) {
