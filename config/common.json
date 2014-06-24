@@ -6,6 +6,17 @@
     },
     "application": {
         "default": {
+            "domain": "default",
+            "rewirteRoute":{
+                "perDirectory": ""
+            },
+            "db": {
+                "cookieSecret": "myblog",
+                "db": "blog",
+                "host": "localhost"
+            }
+        },
+        "127": {
             "domain": "127.0.0.1",
             "rewirteRoute":{
                 "perDirectory": ""

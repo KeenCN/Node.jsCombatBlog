@@ -19,7 +19,7 @@ var bodyParser = require('body-parser');
 
 var competence = require(MODEL_ROOT + '/competence');
 //var routes = require(DIR_ROOT + '/library/route.js');
-var routes = require(DIR_ROOT + '/library/route_bak.js');
+var routes = require(DIR_ROOT + '/library/route.js');
 
 var app = express();
 
@@ -48,7 +48,7 @@ app.use(function(req, res, next){
     // view engine setup
     app.set('views', VIEW_ROOT);
     app.set('view engine', 'ejs');
-    return next(APP_CONFIG_COMMON, APP_CONFIG_DIR);
+    return next();
 });
 
 app.use(flash());
@@ -74,7 +74,6 @@ app.use(express.static(PUBLIC_ROOT));
 //competence
 app.use(competence);
 app.use(routes);
-//routes(app);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

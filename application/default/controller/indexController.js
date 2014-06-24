@@ -5,6 +5,7 @@ module.exports = indexController;
 
 
 indexController.prototype.indexPostAction = function (req, res, next){
+
     res.render('index', {
         title: '主页',
         user: req.session.user,
@@ -14,6 +15,7 @@ indexController.prototype.indexPostAction = function (req, res, next){
 };
 
 indexController.prototype.indexGetAction = function (req, res, next){
+    console.log("aaa");
     res.render('index', {
         title: '主页',
         user: req.session.user,
