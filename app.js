@@ -1,13 +1,15 @@
+require('./include/array.js');
 var express = require('express');
 var path = require('path');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-var settings = require('./settings');
+var settings = require('./config/db.json');
 var flash = require('connect-flash');
 var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var competence = require('./models/competence');
 
 var routes = require('./routes/index');
 //var users = require('./routes/users');
@@ -35,6 +37,9 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+//competence
+app.use(competence);
 
 //app.use('/', routes);
 //app.use('/users', users);
