@@ -11,30 +11,24 @@
                 "perDirectory": ""
             },
             "db": {
-                "cookieSecret": "myblog",
-                "db": "blog",
+                "dbName": "blog",
                 "host": "localhost"
             }
         },
         "127": {
-            "domain": "127.0.0.1",
-            "rewirteRoute":{
-                "perDirectory": ""
-            },
+            "domain": "127.0.0.11",
             "db": {
-                "cookieSecret": "myblog",
-                "db": "blog",
+                "dbName": "blog",
                 "host": "localhost"
             }
         },
         "localhost": {
-            "domain": "localhost",
+            "domain": "localhost1",
             "rewirteRoute":{
-                "perDirectory": ""
+                "perDirectory": "/"
             },
             "db": {
-                "cookieSecret": "myblog",
-                "db": "blog",
+                "dbName": "blog",
                 "host": "localhost"
             }
         }

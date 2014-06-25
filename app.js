@@ -23,33 +23,48 @@ var routes = require(DIR_ROOT + '/library/route.js');
 
 var app = express();
 
-app.use(function(req, res, next){
-    global.HOST_NAME = req.host;
-    for(n in settingsCommon.application) {
-        if(settingsCommon.application[n].domain == HOST_NAME) {
-            global.APP_NAME = n;
-            global.APP_CONFIG_COMMON = settingsCommon.application[n];
-            global.APP_CONFIG_DIR = CONFIG_ROOT + '/' + n;
-            global.CONTROLLER_ROOT = APP_ROOT + '/' + n + '/controller';
-            global.VIEW_ROOT = APP_ROOT + '/' + n + '/views';
+//setting application
+app.use(function(req, res, next) {
 
-            // view engine setup
-            app.set('views', VIEW_ROOT);
-            app.set('view engine', 'ejs');
-            return next();
+    console.log('aaaaaaaaaaa');
+    global.HOST_NAME = req.host;
+    var applicationName = "default";
+    for(applicationNameItem in settingsCommon.application) {
+        if (settingsCommon.application[applicationNameItem].domain == HOST_NAME) {
+            applicationName = applicationNameItem;
+            break;
         }
     }
-    global.APP_NAME = 'default';
-    global.APP_CONFIG_COMMON = settingsCommon.application.default;
-    global.APP_CONFIG_DIR = CONFIG_ROOT + '/default';
-    global.CONTROLLER_ROOT = APP_ROOT + '/default/controller';
-    global.VIEW_ROOT = APP_ROOT + '/default/views';
 
-    // view engine setup
+    global.APP_NAME = applicationName;
+    global.APP_CONFIG_COMMON = settingsCommon.application[applicationName];
+    global.APP_CONFIG_DIR = CONFIG_ROOT + '/' + applicationName;
+    global.CONTROLLER_ROOT = APP_ROOT + '/' + applicationName + '/controllers';
+    global.VIEW_ROOT = APP_ROOT + '/' + applicationName + '/views';
+    global.PRE_DIRECTORY = APP_CONFIG_COMMON.rewirteRoute.perDirectory || '';
+
+// view engine setup
     app.set('views', VIEW_ROOT);
     app.set('view engine', 'ejs');
+
     return next();
 });
+
+//setting pre rewirte
+/*
+app.use(function (req, res, next){
+    if (PRE_DIRECTORY) {
+        var subLength = APP_CONFIG_COMMON.rewirteRoute.perDirectory.length,
+            preDirectory = path.substr(0, APP_CONFIG_COMMON.rewirteRoute.perDirectory.length);
+        if (preDirectory == APP_CONFIG_COMMON.rewirteRoute.perDirectory) {
+            path = path.substr(subLength);
+        } else {
+            //404
+        }
+    }
+    next();
+});
+*/
 
 app.use(flash());
 
