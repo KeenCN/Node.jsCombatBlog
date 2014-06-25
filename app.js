@@ -25,8 +25,6 @@ var app = express();
 
 //setting application
 app.use(function(req, res, next) {
-
-    console.log('aaaaaaaaaaa');
     global.HOST_NAME = req.host;
     var applicationName = "default";
     for(applicationNameItem in settingsCommon.application) {
